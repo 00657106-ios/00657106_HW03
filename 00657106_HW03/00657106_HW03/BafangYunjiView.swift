@@ -29,3 +29,30 @@ struct BafangYunjiView: View {
         }
     }
 }
+
+struct BafangYunjiFood: View {
+    var body: some View {
+        
+            HStack {
+                friedDumpling()
+                VStack(alignment: .leading) {
+                    
+                    Text("每次一定都吃")
+                    Text("鍋貼")
+                }
+                Spacer()
+                  }
+
+       
+    }
+}
+
+struct friedDumpling: View {
+    var body: some View {
+        Image("鍋貼")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 80, height: 80)
+            .clipped()
+    }
+}

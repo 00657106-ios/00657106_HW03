@@ -34,7 +34,7 @@ struct QuanHongFood: View {
     var body: some View {
         VStack {
             TabView {
-                ForEach(1..<8) { (index) in
+                ForEach(1..<5) { (index) in
                     Image("QuanHongFood\(index)")
                         .resizable()
                         .scaledToFit()
@@ -43,9 +43,9 @@ struct QuanHongFood: View {
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             .frame(height: 300)
-            Text("當哈利波特遇見彼得潘")
+            Text("去全虹固定吃")
                 .font(.system(size: 40))
-            Image("peter")
+            Image("鹹酥雞")
                 .resizable()
                 .scaledToFit()
         }

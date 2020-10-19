@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var moveDistance: CGFloat = 0
+    @State private var rotateDegree: Double = 0
     @State private var opacity: Double = 1
+    @State private var show = false
     var body: some View {
         TabView{
+            
             NavigationView {
                 VStack {
+                    
                     List{
+                        
                     NavigationLink(destination: BraisedDishView()) {
                         BraisedDish()
                         
@@ -34,16 +38,43 @@ struct ContentView: View {
                         
                         
                 }.navigationTitle("常吃的餐廳列表")}
+            
             }.tabItem {Image(systemName: "house.fill"); Text("Restaurant") }
+            
             NavigationView {
                 VStack {
-                    List{
-                    NavigationLink(destination: QuanHongFood()) {
-                        QuanHong()
-                        
+                    
+                    Section(header: Text("煮的")){
+                        List{
+                            ScrollView {
+                            NavigationLink(destination: BraisedDishFood()) {
+                                BraisedDish()
+                                
+                            }
+                            NavigationLink(destination: NoodleShopFood()) {
+                                NoodleShop()
+                            }
+                            }
+                        }
                     }
-                        
+                    Section(header: Text("煎的")){
+                        List{
+                            NavigationLink(destination: BafangYunjiFood()) {
+                                BafangYunji()
+                                
+                            }
+                        }
                     }
+                        Section(header: Text("炸的")){
+                        List{
+                                NavigationLink(destination: QuanHongFood()) {
+                                    QuanHong()
+                                    
+                                }
+                                
+                            }
+                        }
+                    
                     
                 }
                 
@@ -52,31 +83,43 @@ struct ContentView: View {
                     Image(systemName: "star.fill");
                     Text("Meals")
                 }
+            
             VStack {
-                        Button("每天一定要吃蔬菜") {
-                            moveDistance += 100
-                            opacity -= 0.2
-                            
-                        }
-                        .font(.title)
-                        HStack {
-                            Image("青江菜")
-                                .resizable()
-                                .scaledToFit()
-                                .offset(x: moveDistance, y: 0)
-                                .opacity(opacity)
-                                .animation(.spring(dampingFraction: 0.1))
-                            Spacer()
-                        }
-                        Button("今天忘記吃蔬菜") {
-                            moveDistance -= 100
-                            opacity += 0.2
+                Button(show ? "今天不想吃" : "每天都要吃") {
+                self.show.toggle()
+                }.animation(nil)
+                if show {
+                Image("青江菜")
+                    .resizable()
+                    .scaledToFit()
+                .transition(.opacity)
                 }
+                else {
+                    Image("青江菜")
+                    .resizable()
+                    .scaledToFit()
+                    .hidden()
                     }
+                        
+                Button("最愛吃的") {
+                      rotateDegree = 360
+                   }
+                   .font(.title)
+                   Image("薯條")
+                    .resizable()
+                    .scaledToFit()
+                    .rotationEffect(.degrees(rotateDegree))
+                      .animation(
+                        Animation.linear(duration: 0.5)
+                            .repeatForever(autoreverses: false)
+                      )
+
+                    }.animation(.easeInOut(duration: 5))
                 .tabItem {
                     Image(systemName: "heart.fill");
                     Text("favorite")
                 }
+            
             Color.blue
                 .tabItem {
                     Image(systemName: "location.fill");
@@ -97,8 +140,6 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
-
-
 
 
 

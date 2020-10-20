@@ -16,7 +16,7 @@ struct NoodleShopView: View {
                     .scaledToFill()
                     .frame(width: 150, height: 150)
                     .clipped()
-               Text("餐點便宜味道也鄉道不錯，燙青菜給的份量與其他地方相比多非常的多，如果月底沒錢可以常去吃，可以吃的很飽又便宜。")
+               Text("餐點便宜味道也相當不錯，燙青菜給的份量與其他地方相比多非常的多，如果月底沒錢可以常去吃，可以吃的很飽又便宜。")
             }
 
         }

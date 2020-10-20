@@ -10,22 +10,13 @@ import SwiftUI
 struct QuanHongView: View {
     var body: some View {
         NavigationView {
-
-            HStack {
-                Image("對的時間點")
+            VStack{
+            Text("海大附近炸物專賣，價格便宜且鹹酥雞這的很好吃，除了食材美味之外店家的蔬菜是有機蔬菜吃起來，食用起來相對安心。")
+                Image("鹹酥雞")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 80, height: 80)
-                    .clipped()
-                VStack(alignment: .leading) {
-                    
-                    Text("對的時間點")
-                    Text("林俊傑")
-                    .navigationTitle("全虹")
-                }
-                Spacer()
+                    .frame(width: 250, height: 250)
             }
-            .navigationTitle("返回")
         }
     }
 }

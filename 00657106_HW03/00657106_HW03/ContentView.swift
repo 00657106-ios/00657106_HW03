@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var rotateDegree: Double = 0
     @State private var opacity: Double = 1
     @State private var show = false
+        
     var body: some View {
         TabView{
             
@@ -108,10 +109,11 @@ struct ContentView: View {
                    Image("薯條")
                     .resizable()
                     .scaledToFit()
+                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     .rotationEffect(.degrees(rotateDegree))
                       .animation(
                         Animation.linear(duration: 0.5)
-                            .repeatForever(autoreverses: false)
+                            .repeatCount(3, autoreverses: false)
                       )
 
                     }.animation(.easeInOut(duration: 5))
@@ -120,8 +122,48 @@ struct ContentView: View {
                     Text("favorite")
                 }
             
-            Color.blue
-                .tabItem {
+            NavigationView {
+                VStack {
+                    
+                    List{
+                        
+                        Link(destination: URL(string: "http://maps.apple.com/?address=202基隆市中正區祥豐街829號1F".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, label: {
+                                    VStack {
+                                        Image("丐幫滷味")
+                                            .resizable()
+                                            .scaledToFit()
+                                    }
+                        })
+                        .buttonStyle(PlainButtonStyle())
+                        Link(destination: URL(string: "http://maps.apple.com/?address=基隆市中正區中正路捌壹捌面馆".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, label: {
+                                    VStack {
+                                        Image("牛肉麵")
+                                            .resizable()
+                                            .scaledToFit()
+                                    }
+                        })
+                        .buttonStyle(PlainButtonStyle())
+                        Link(destination: URL(string: "http://maps.apple.com/?address=基隆市中正區中正路八方雲集鍋貼水餃專賣店(基隆中正店)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, label: {
+                                    VStack {
+                                        Image("鍋貼")
+                                            .resizable()
+                                            .scaledToFit()
+                                    }
+                        })
+                        .buttonStyle(PlainButtonStyle())
+                        Link(destination: URL(string: "http://maps.apple.com/?address=全虹鹽酥雞202基隆市中正區祥豐街No. 841號".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, label: {
+                                    VStack {
+                                        Image("鹹酥雞")
+                                            .resizable()
+                                            .scaledToFit()
+                                    }
+                        })
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        
+                }.navigationTitle("餐廳位置")}
+            
+            }.tabItem {
                     Image(systemName: "location.fill");
                     Text("location")
                 }

@@ -22,7 +22,7 @@ struct BraisedDishView: View {
             """
             ))
             .accentColor(.clear)
-            .frame(width: 200, height: 200)
+            .frame(width: 300, height: 400)
         }
     }
     
